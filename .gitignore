@@ -1,3 +1,4 @@
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -30,7 +31,6 @@ $RECYCLE.BIN/
 
 # Thumbnails
 ._*
-.CLASSPATH
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -46,25 +46,3 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-
-# mercurial
-.hg/*
-.hgignore
-
-#java stuff
-*.class
-/bin/
-.classpath
-/build/*
-/dist/*
-*.prefs
-
-#vim stuff
-*.swp
-*~
-sysProps.xml
-
-build.properties
-
-build.properties
-build.xml

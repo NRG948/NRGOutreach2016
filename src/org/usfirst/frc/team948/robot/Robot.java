@@ -2,6 +2,7 @@
 package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -25,6 +26,8 @@ public class Robot extends IterativeRobot {
 	public static final Shooter shooter = new Shooter();
 	public static OI oi;
 
+	private Timer timer = new Timer();
+	
     Command autonomousCommand;
 
     /**
@@ -60,6 +63,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        timer.reset();
+        timer.start();
     }
 
     /**
@@ -75,11 +80,20 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        if (OI.leftJoystick.getRawAxis(3) < 0.5) {
+        if (timer.get() >= 3) {
+        	timer.reset();
+        	RobotMap.green.set(false);
+        	RobotMap.blue.set(true);
+        }
+        else if (timer.get() >= 2) {
         	RobotMap.green.set(true);
         	RobotMap.blue.set(false);
         }
-        else {
+        else if (timer.get() >= 1){
+        	RobotMap.green.set(true);
+        	RobotMap.blue.set(true);
+        }
+        else if (timer.get()>= 0) {
         	RobotMap.green.set(false);
         	RobotMap.blue.set(true);
         }

@@ -79,7 +79,8 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+     
+    	Scheduler.getInstance().run();
         if (timer.get() >= 3) {
         	timer.reset();
         	RobotMap.green.set(false);

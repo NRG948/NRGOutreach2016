@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.Shoot;
+import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,9 +15,11 @@ import org.usfirst.frc.team948.robot.commands.Shoot;
 public class OI {
 	public static final Joystick leftJoystick = new Joystick(2);
 	public static final Button shootButton = new JoystickButton(leftJoystick, 1);
+	public static final Button switchButton = new JoystickButton(leftJoystick, 2);
 	
 	public static void buttonInit() {
 		shootButton.whenPressed(new Shoot(0.4));
+		switchButton.whenPressed(new SwitchDrive());
 	}
 	
 	public static double getX(){

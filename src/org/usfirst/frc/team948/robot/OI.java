@@ -1,6 +1,7 @@
 package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -13,7 +14,7 @@ import org.usfirst.frc.team948.robot.commands.SwitchDrive;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public static final int Sensitivity = 1/5;
+	public static final double Sensitivity = Preferences.getInstance().getDouble("Sensitivity", 1/5);
 	public static final Joystick leftJoystick = new Joystick(2);
 	public static final Button shootButton = new JoystickButton(leftJoystick, 1);
 	public static final Button switchButton = new JoystickButton(leftJoystick, 2);

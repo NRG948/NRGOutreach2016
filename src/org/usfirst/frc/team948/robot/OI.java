@@ -13,6 +13,7 @@ import org.usfirst.frc.team948.robot.commands.SwitchDrive;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	public static final int Sensitivity = 1/5;
 	public static final Joystick leftJoystick = new Joystick(2);
 	public static final Button shootButton = new JoystickButton(leftJoystick, 1);
 	public static final Button switchButton = new JoystickButton(leftJoystick, 2);
@@ -23,10 +24,10 @@ public class OI {
 	}
 	
 	public static double getX(){
-		return Math.abs(leftJoystick.getRawAxis(0))>0.05? leftJoystick.getRawAxis(0)/3: 0;
+		return Math.abs(leftJoystick.getRawAxis(0))>0.05? leftJoystick.getRawAxis(0)*Sensitivity: 0;
 	}  
 	public static double getY(){
-		return Math.abs(leftJoystick.getRawAxis(1))>0.05? leftJoystick.getRawAxis(1)/3 : 0;
+		return Math.abs(leftJoystick.getRawAxis(1))>0.05? leftJoystick.getRawAxis(1)*Sensitivity : 0;
 	}
 	public static double getRot(){
 		if(Math.abs(leftJoystick.getRawAxis(2))>0.0){

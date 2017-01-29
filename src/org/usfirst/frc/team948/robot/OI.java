@@ -20,7 +20,7 @@ public class OI {
 	public static final Button switchButton = new JoystickButton(leftJoystick, 2);
 	
 	public static void buttonInit() {
-		shootButton.whenPressed(new Shoot(0.4));
+		shootButton.whileHeld(new Shoot(0.5));
 		switchButton.whenPressed(new SwitchDrive());
 	}
 	

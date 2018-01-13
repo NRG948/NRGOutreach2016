@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,6 +23,7 @@ public class RobotMap {
 	public static Compressor c;
 	public static DigitalInput catapultSwitch;
 	public static Solenoid blue, green, lol;
+	public static MecanumDrive mecanumDrive;
 	public static void init(){
 		c = new Compressor(0);
 		lol = new Solenoid(0);
@@ -35,6 +38,6 @@ public class RobotMap {
 		talonLB = new Talon(2);
 		shooterArmTalon = new Talon(1);
 		catapultSwitch = new DigitalInput(9);
-		
+		mecanumDrive = new MecanumDrive(talonLF, talonLB, talonRF, talonRB);
 	}
 }

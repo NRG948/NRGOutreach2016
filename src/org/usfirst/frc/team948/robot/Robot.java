@@ -21,7 +21,6 @@ import org.usfirst.frc.team948.robot.subsystems.Shooter;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
 	public static final Drive drive = new Drive();
 	public static final Shooter shooter = new Shooter();
 	public static OI oi;

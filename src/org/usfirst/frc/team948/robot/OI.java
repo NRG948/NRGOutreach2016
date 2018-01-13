@@ -2,12 +2,15 @@ package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
+import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.Shoot;
 import org.usfirst.frc.team948.robot.commands.SwitchDrive;
+import org.usfirst.frc.team948.robot.subsystems.Drive;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,19 +19,22 @@ import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 public class OI {
 	public static final double Sensitivity = Preferences.getInstance().getDouble("Sensitivity", 1/5);
 	public static final Joystick leftJoystick = new Joystick(2);
-	public static final Button shootButton = new JoystickButton(leftJoystick, 1);
-	public static final Button switchButton = new JoystickButton(leftJoystick, 2);
+//	public static final Button shootButton = new JoystickButton(leftJoystick, 1);
+//	public static final Button switchButton = new JoystickButton(leftJoystick, 2);
+	public static final Button shiftButton = new JoystickButton(leftJoystick, 1);
 	
 	public static void buttonInit() {
-		shootButton.whileHeld(new Shoot(0.5));
-		switchButton.whenPressed(new SwitchDrive());
+//		shootButton.whileHeld(new Shoot(0.5));
+//		switchButton.whenPressed(new SwitchDrive());
+		shiftButton.whenPressed(new SetDriveScale(Drive.SCALE_HIGH));
+		shiftButton.whenReleased(new SetDriveScale(Drive.SCALE_LOW));
 	}
 	
 	public static double getX(){
-		return Math.abs(leftJoystick.getRawAxis(0))>0.05? leftJoystick.getRawAxis(0)*Sensitivity: 0;
+		return leftJoystick.getX();
 	}  
 	public static double getY(){
-		return Math.abs(leftJoystick.getRawAxis(1))>0.05? leftJoystick.getRawAxis(1)*Sensitivity : 0;
+		return leftJoystick.getY();
 	}
 	public static double getRot(){
 		if(Math.abs(leftJoystick.getRawAxis(2))>0.0){

@@ -5,11 +5,21 @@ import org.usfirst.frc.team948.robot.RobotMap;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class Drive extends Subsystem {
+	@Override
+	public void periodic() {
+		// TODO Auto-generated method stub
+		SmartDashboard.putData("encoderLF", RobotMap.encoderLF);
+		SmartDashboard.putData("encoderRF", RobotMap.encoderRF);
+		SmartDashboard.putData("encoderRB", RobotMap.encoderRB);
+		SmartDashboard.putData("encoderLB", RobotMap.encoderLB);
+	}
+
 	private static boolean driveEnabled = true;
 	public static final double SCALE_HIGH = 1.0;
 	public static final double SCALE_LOW = 0.5;

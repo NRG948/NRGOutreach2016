@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
+import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.Shoot;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.subsystems.Shooter;
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 		RobotMap.init();
 		OI.buttonInit();
+		SmartDashboard.putData("Reset Sensors", new ResetSensors());
 	}
 
 	public void disabledPeriodic() {
@@ -108,6 +110,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void periodicAll() {
-		SmartDashboard.putBoolean("catapult switch", RobotMap.catapultSwitch.get());
+//		SmartDashboard.putBoolean("catapult switch", RobotMap.catapultSwitch.get());
 	}
 }

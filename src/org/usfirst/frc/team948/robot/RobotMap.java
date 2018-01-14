@@ -2,6 +2,7 @@ package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -19,6 +20,10 @@ public class RobotMap {
 	public static SpeedController talonRB;
 	public static SpeedController talonLF;
 	public static SpeedController talonLB;
+	public static Encoder encoderRF;
+	public static Encoder encoderRB;
+	public static Encoder encoderLF;
+	public static Encoder encoderLB;	
 	public static SpeedController shooterArmTalon;
 	public static Compressor c;
 	public static DigitalInput catapultSwitch;
@@ -37,7 +42,11 @@ public class RobotMap {
 		talonLF = new Talon(3);
 		talonLB = new Talon(2);
 		shooterArmTalon = new Talon(1);
-		catapultSwitch = new DigitalInput(9);
+//		catapultSwitch = new DigitalInput(9);
 		mecanumDrive = new MecanumDrive(talonLF, talonLB, talonRF, talonRB);
+		encoderRF = new Encoder(4, 5, false);
+		encoderRB = new Encoder(6, 7, false);
+		encoderLF = new Encoder(9, 8, true);
+		encoderLB = new Encoder(2, 3, true);
 	}
 }

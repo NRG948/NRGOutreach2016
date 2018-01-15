@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.Shoot;
+import org.usfirst.frc.team948.robot.commands.TimedDrive;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.subsystems.Shooter;
@@ -42,6 +43,11 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		OI.buttonInit();
 		SmartDashboard.putData("Reset Sensors", new ResetSensors());
+		SmartDashboard.putData("Spin", new TimedDrive(0, 0, 0.5, 2));
+		SmartDashboard.putData("Strafe Right", new TimedDrive(0.5, 0, 0, 2));
+		SmartDashboard.putData("Strafe Leftt", new TimedDrive(-0.5, 0, 0, 2));
+
+
 	}
 
 	public void disabledPeriodic() {

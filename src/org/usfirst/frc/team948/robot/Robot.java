@@ -2,6 +2,7 @@
 package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,7 +24,7 @@ import org.usfirst.frc.team948.robot.subsystems.Shooter;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot {
 	public static final Drive drive = new Drive();
 	public static final Shooter shooter = new Shooter();
 	public static final CubeAcquirer acquirer = new CubeAcquirer();

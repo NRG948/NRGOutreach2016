@@ -48,10 +48,10 @@ public class Drive extends Subsystem {
 //    		RobotMap.talonLF.set(velY-velX-omega*a);
     	}
     	else {
-    		RobotMap.talonRF.set(0);
-    		RobotMap.talonRB.set(0);
-    		RobotMap.talonLF.set(0);
-    		RobotMap.talonLB.set(0);
+    		RobotMap.victorRF.set(0);
+    		RobotMap.victorRB.set(0);
+    		RobotMap.victorLF.set(0);
+    		RobotMap.victorLB.set(0);
     	}
     }
       

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.Shoot;
+import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.subsystems.Shooter;
 
@@ -24,6 +25,7 @@ import org.usfirst.frc.team948.robot.subsystems.Shooter;
 public class Robot extends IterativeRobot {
 	public static final Drive drive = new Drive();
 	public static final Shooter shooter = new Shooter();
+	public static final CubeAcquirer acquirer = new CubeAcquirer();
 	public static OI oi;
 
 	private Timer timer = new Timer();

@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -16,10 +17,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-	public static SpeedController talonRF;
-	public static SpeedController talonRB;
-	public static SpeedController talonLF;
-	public static SpeedController talonLB;
+	public static Victor victorRF;
+	public static Victor victorRB;
+	public static Victor victorLF;
+	public static Victor victorLB;
 	public static Encoder encoderRF;
 	public static Encoder encoderRB;
 	public static Encoder encoderLF;
@@ -28,25 +29,29 @@ public class RobotMap {
 	public static Compressor c;
 	public static DigitalInput catapultSwitch;
 	public static Solenoid blue, green, lol;
+	public static Solenoid cubeAcquirer;
 	public static MecanumDrive mecanumDrive;
+	public static Victor liftVictor; 
 	public static void init(){
 		c = new Compressor(0);
+		cubeAcquirer = new Solenoid(4);
 		lol = new Solenoid(0);
 		blue = new Solenoid(5);
 		green = new Solenoid(6);
 		lol.set(true);
 		blue.set(true);
 		green.set(true);
-		talonRF = new Talon(0);
-		talonRB = new Talon(4);
-		talonLF = new Talon(3);
-		talonLB = new Talon(2);
+		victorRF = new Victor(0);
+		victorRB = new Victor(4);
+		victorLF = new Victor(3);
+		victorLB = new Victor(2);
 		shooterArmTalon = new Talon(1);
 //		catapultSwitch = new DigitalInput(9);
-		mecanumDrive = new MecanumDrive(talonLF, talonLB, talonRF, talonRB);
+		mecanumDrive = new MecanumDrive(victorLF, victorLB, victorRF, victorRB);
 		encoderRF = new Encoder(4, 5, false);
 		encoderRB = new Encoder(6, 7, false);
 		encoderLF = new Encoder(9, 8, true);
 		encoderLB = new Encoder(2, 3, true);
+		liftVictor = new Victor(5);
 	}
 }

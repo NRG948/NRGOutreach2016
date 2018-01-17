@@ -3,6 +3,7 @@ package org.usfirst.frc.team948.robot.commands;
 import org.usfirst.frc.team948.robot.Robot;
 import org.usfirst.frc.team948.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -20,7 +21,7 @@ public class AcquireClose extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.cubeAcquirer.set(false);
+    	RobotMap.cubeAcquirer.set(Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()

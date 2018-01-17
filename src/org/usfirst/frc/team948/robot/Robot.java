@@ -9,13 +9,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team948.robot.commands.AcquireClose;
+import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
-import org.usfirst.frc.team948.robot.commands.Shoot;
 import org.usfirst.frc.team948.robot.commands.TimedDrive;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
-import org.usfirst.frc.team948.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +26,6 @@ import org.usfirst.frc.team948.robot.subsystems.Shooter;
  */
 public class Robot extends TimedRobot {
 	public static final Drive drive = new Drive();
-	public static final Shooter shooter = new Shooter();
 	public static final CubeAcquirer acquirer = new CubeAcquirer();
 	public static OI oi;
 
@@ -47,7 +46,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Spin", new TimedDrive(0, 0, 0.5, 2));
 		SmartDashboard.putData("Strafe Right", new TimedDrive(0.5, 0, 0, 2));
 		SmartDashboard.putData("Strafe Leftt", new TimedDrive(-0.5, 0, 0, 2));
-
+		SmartDashboard.putData("Cube Acquirer Close", new AcquireClose());
+		SmartDashboard.putData("Cube Acquirer Open", new AcquireOpen());
 
 	}
 
@@ -94,21 +94,6 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 
 		Scheduler.getInstance().run();
-		if (timer.get() >= 3) {
-			timer.reset();
-			RobotMap.green.set(false);
-			RobotMap.blue.set(true);
-		} else if (timer.get() >= 2) {
-			RobotMap.green.set(true);
-			RobotMap.blue.set(false);
-		} else if (timer.get() >= 1) {
-			RobotMap.green.set(true);
-			RobotMap.blue.set(true);
-		} else if (timer.get() >= 0) {
-			RobotMap.green.set(false);
-			RobotMap.blue.set(true);
-		}
-		periodicAll();
 	}
 
 	/**

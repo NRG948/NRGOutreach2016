@@ -43,9 +43,10 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 		OI.buttonInit();
 		SmartDashboard.putData("Reset Sensors", new ResetSensors());
-		SmartDashboard.putData("Spin", new TimedDrive(0, 0, 0.5, 2));
-		SmartDashboard.putData("Strafe Right", new TimedDrive(0.5, 0, 0, 2));
-		SmartDashboard.putData("Strafe Leftt", new TimedDrive(-0.5, 0, 0, 2));
+		SmartDashboard.putData("Spin", new TimedDrive(0, 0, 0.5, 10));
+		SmartDashboard.putData("Strafe Right", new TimedDrive(0.8, 0, 0, 2));
+		SmartDashboard.putData("Strafe Left", new TimedDrive(-0.8, 0, 0, 2));
+		SmartDashboard.putData("Straight", new TimedDrive(0, 0.8, 0, 2));
 		SmartDashboard.putData("Cube Acquirer Close", new AcquireClose());
 		SmartDashboard.putData("Cube Acquirer Open", new AcquireOpen());
 

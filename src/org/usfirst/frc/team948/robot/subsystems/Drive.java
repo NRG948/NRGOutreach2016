@@ -41,7 +41,7 @@ public class Drive extends Subsystem {
     	if (driveEnabled) {
     		velY *= scale;
     		velX *= scale;
-    		RobotMap.mecanumDrive.driveCartesian(velX, velY, omega);
+    		RobotMap.mecanumDrive.driveCartesian(-velX, velY, omega);
 //    		RobotMap.talonRF.set(-(velX+velY+omega*a));
 //    		RobotMap.talonRB.set(-(velY-velX+omega*a));
 //    		RobotMap.talonLB.set((velX+velY-omega*a));

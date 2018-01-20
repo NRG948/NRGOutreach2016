@@ -25,17 +25,33 @@ public class OI {
 	public static final Button acquireButton = new JoystickButton(leftJoystick, 2);
 	public static final Button liftUpButton = new JoystickButton(leftJoystick, 3);
 	public static final Button liftDownButton = new JoystickButton(leftJoystick, 4);
+	
+
+	public static final Joystick xboxController = new Joystick(1);
+	public static final Button xboxA = new JoystickButton(xboxController, 1);
+	public static final Button xboxB = new JoystickButton(xboxController, 2);
+	public static final Button xboxX = new JoystickButton(xboxController, 3);
+	public static final Button xboxY = new JoystickButton(xboxController, 4);
+	public static final Button rightBumper = new JoystickButton(xboxController, 6);
+	
+	
 
 	
 	public static void buttonInit() {
 		shiftButton.whenPressed(new SetDriveScale(Drive.SCALE_HIGH));
 		shiftButton.whenReleased(new SetDriveScale(Drive.SCALE_LOW));
-		acquireButton.whenPressed(new AcquireOpen());
-		acquireButton.whenReleased(new AcquireClose());
-		liftUpButton.whenPressed(new CubeLift(0.5));
-		liftUpButton.whenReleased(new CubeLift(0));
-		liftDownButton.whenPressed(new CubeLift(-0.25));
-		liftDownButton.whenReleased(new CubeLift(0));
+//		acquireButton.whenPressed(new AcquireOpen());
+//		acquireButton.whenReleased(new AcquireClose());
+		rightBumper.whenPressed(new AcquireOpen());
+		rightBumper.whenReleased(new AcquireClose());
+//		liftUpButton.whenPressed(new CubeLift(0.5));
+//		liftUpButton.whenReleased(new CubeLift(0));
+//		liftDownButton.whenPressed(new CubeLift(-0.25));
+//		liftDownButton.whenReleased(new CubeLift(0));
+		xboxA.whenPressed(new CubeLift(0.5));
+		xboxA.whenReleased(new CubeLift(0));
+		xboxY.whenPressed(new CubeLift(-1));
+		xboxY.whenReleased(new CubeLift(0));
 	}
 	
 	public static double getX(){

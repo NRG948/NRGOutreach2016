@@ -10,6 +10,7 @@ import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.CubeLift;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
+import org.usfirst.frc.team948.robot.commands.MotorAcquire;
 import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
@@ -32,26 +33,23 @@ public class OI {
 	public static final Button xboxB = new JoystickButton(xboxController, 2);
 	public static final Button xboxX = new JoystickButton(xboxController, 3);
 	public static final Button xboxY = new JoystickButton(xboxController, 4);
-	public static final Button rightBumper = new JoystickButton(xboxController, 6);
-	
+	public static final Button rightBumper = new JoystickButton(xboxController, 5);
+	public static final Button leftBumper = new JoystickButton(xboxController, 6);	
 	
 
 	
 	public static void buttonInit() {
 		shiftButton.whenPressed(new SetDriveScale(Drive.SCALE_HIGH));
 		shiftButton.whenReleased(new SetDriveScale(Drive.SCALE_LOW));
-//		acquireButton.whenPressed(new AcquireOpen());
-//		acquireButton.whenReleased(new AcquireClose());
-		rightBumper.whenPressed(new AcquireOpen());
-		rightBumper.whenReleased(new AcquireClose());
-//		liftUpButton.whenPressed(new CubeLift(0.5));
-//		liftUpButton.whenReleased(new CubeLift(0));
-//		liftDownButton.whenPressed(new CubeLift(-0.25));
-//		liftDownButton.whenReleased(new CubeLift(0));
+		rightBumper.whenPressed(new MotorAcquire(1));
+		rightBumper.whenReleased(new MotorAcquire(0));
+		leftBumper.whenPressed(new MotorAcquire(-1));
+		leftBumper.whenReleased(new MotorAcquire(0));
 		xboxA.whenPressed(new CubeLift(0.5));
 		xboxA.whenReleased(new CubeLift(0));
 		xboxY.whenPressed(new CubeLift(-1));
 		xboxY.whenReleased(new CubeLift(0));
+		
 	}
 	
 	public static double getX(){

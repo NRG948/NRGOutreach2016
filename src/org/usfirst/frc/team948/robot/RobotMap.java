@@ -22,6 +22,8 @@ public class RobotMap {
 	public static Victor victorRB;
 	public static Victor victorLF;
 	public static Victor victorLB;
+	public static Victor aqVictorR;
+	public static Victor aqVictorL;
 	public static Encoder encoderRF;
 	public static Encoder encoderRB;
 	public static Encoder encoderLF;
@@ -33,15 +35,19 @@ public class RobotMap {
 	public static void init(){
 		c = new Compressor(0);
 		cubeAcquirer = new DoubleSolenoid(2, 3);
-		victorRF = new Victor(0);
-		victorRB = new Victor(4);
+		victorRB = new Victor(0);
+		victorRF = new Victor(1);
 		victorLF = new Victor(3);
 		victorLB = new Victor(2);
+		liftVictor = new Victor(4);
+		aqVictorL = new Victor(5);
+		aqVictorR = new Victor(6);
+		
 		mecanumDrive = new MecanumDrive(victorLF, victorLB, victorRF, victorRB);
 		encoderRF = new Encoder(4, 5, false);
 		encoderRB = new Encoder(6, 7, false);
 		encoderLF = new Encoder(9, 8, true);
 		encoderLB = new Encoder(2, 3, true);
-		liftVictor = new Victor(5);
+
 	}
 }

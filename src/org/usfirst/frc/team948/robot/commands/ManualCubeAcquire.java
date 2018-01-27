@@ -1,18 +1,16 @@
- package org.usfirst.frc.team948.robot.commands;
+package org.usfirst.frc.team948.robot.commands;
 
+import org.usfirst.frc.team948.robot.OI;
 import org.usfirst.frc.team948.robot.Robot;
 import org.usfirst.frc.team948.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class CubeLift extends Command {
+public class ManualCubeAcquire extends Command{
 	
-	private double liftSpeed;
-
-    public CubeLift(double liftSpeed) {
-    	this.liftSpeed = liftSpeed;
+	public ManualCubeAcquire() {
     	requires(Robot.acquirer);
     }
 
@@ -22,12 +20,23 @@ public class CubeLift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.liftVictor.set(liftSpeed);
+    	double rSpeed = OI.xboxController.getY(Hand.kRight);
+    	double lSpeed = OI.xboxController.getY(Hand.kLeft);
+    	setAcquireSpeed(rSpeed, RobotMap.aqVictorR);
+    	setAcquireSpeed(lSpeed, RobotMap.aqVictorL);
     }
+
+	private void setAcquireSpeed(double speed, Victor victor) {
+		if(Math.abs(speed) > 0.05) {
+    		victor.set(speed);
+    	} else {
+    		victor.set(0);
+    	}
+	}
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -37,6 +46,8 @@ public class CubeLift extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.liftVictor.set(0);
+    	RobotMap.aqVictorL.set(0);
+    	RobotMap.aqVictorR.set(0);
     }
+
 }

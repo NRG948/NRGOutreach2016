@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MotorAcquire extends Command {
+public class CubeAcquire extends Command {
 	
 	private double aqSpeed;
 
-    public MotorAcquire(double aqSpeed) {
+    public CubeAcquire(double aqSpeed) {
     	this.aqSpeed = aqSpeed;
     	requires(Robot.acquirer);
     }
@@ -29,7 +29,7 @@ public class MotorAcquire extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -39,5 +39,7 @@ public class MotorAcquire extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	RobotMap.aqVictorL.set(0);
+    	RobotMap.aqVictorR.set(0);
     }
 }

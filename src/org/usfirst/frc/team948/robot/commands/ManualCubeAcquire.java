@@ -22,8 +22,9 @@ public class ManualCubeAcquire extends Command{
     protected void execute() {
     	double rSpeed = OI.xboxController.getY(Hand.kRight);
     	double lSpeed = OI.xboxController.getY(Hand.kLeft);
-    	setAcquireSpeed(rSpeed, RobotMap.aqVictorR);
-    	setAcquireSpeed(lSpeed, RobotMap.aqVictorL);
+    	setAcquireSpeed(-rSpeed, RobotMap.aqVictorR);
+    	setAcquireSpeed(lSpeed-0.05, RobotMap.aqVictorL);
+    //	Left Acquirer victor power subtracted to create deadband
     }
 
 	private void setAcquireSpeed(double speed, Victor victor) {
@@ -41,13 +42,14 @@ public class ManualCubeAcquire extends Command{
 
     // Called once after isFinished returns true
     protected void end() {
+    	setAcquireSpeed(0, RobotMap.aqVictorR);
+    	setAcquireSpeed(0, RobotMap.aqVictorL);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.aqVictorL.set(0);
-    	RobotMap.aqVictorR.set(0);
+    	end();
     }
 
 }

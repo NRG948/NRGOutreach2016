@@ -8,20 +8,27 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ManualCubeLift extends Command{
+	private final double LIFT_POWER_SCALE_UP = 1;
+	private final double LIFT_POWER_SCALE_DOWN = 0.3;	
 	public ManualCubeLift() {
-    	requires(Robot.acquirer);
+    	requires(Robot.cubeLifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double upSpeed = OI.xboxController.getTriggerAxis(Hand.kRight);
-    	double downSpeed = OI.xboxController.getTriggerAxis(Hand.kRight);
+    			
+    	double upSpeed = OI.getTriggerL() * LIFT_POWER_SCALE_UP;
+    	double downSpeed = OI.getTriggerR() * LIFT_POWER_SCALE_DOWN;
+    	
+    	
     	if(upSpeed > 0) {
-    		RobotMap.liftVictor.set(upSpeed);
+//    		System.out.println("SOMEBODY ONCE TOLD ME THE WORLD IS GONNA ROLL ME");
+    		RobotMap.liftVictor.set(-upSpeed);
     	} else {
     		RobotMap.liftVictor.set(downSpeed);
     	}

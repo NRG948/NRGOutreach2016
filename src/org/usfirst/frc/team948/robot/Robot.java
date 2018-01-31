@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
+import org.usfirst.frc.team948.robot.commands.CubeLift;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.TimedDrive;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
+import org.usfirst.frc.team948.robot.subsystems.CubeLifter;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 
 /**
@@ -27,6 +29,8 @@ import org.usfirst.frc.team948.robot.subsystems.Drive;
 public class Robot extends TimedRobot {
 	public static final Drive drive = new Drive();
 	public static final CubeAcquirer acquirer = new CubeAcquirer();
+	public static final CubeLifter cubeLifter = new CubeLifter();
+	
 	public static OI oi;
 
 	private Timer timer = new Timer();
@@ -68,6 +72,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		periodicAll();
 	}
 
 	public void teleopInit() {
@@ -93,8 +98,10 @@ public class Robot extends TimedRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
-
 		Scheduler.getInstance().run();
+		periodicAll();
+		SmartDashboard.putNumber("Xbox left trigger", OI.getTriggerL());
+		SmartDashboard.putNumber("Xbox right trigger", OI.getTriggerR());
 	}
 
 	/**

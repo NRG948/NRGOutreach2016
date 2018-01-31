@@ -27,7 +27,7 @@ public class SetDriveScale extends Command {
     	Robot.drive.setScale(scale);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    // 	 this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return true;
     }

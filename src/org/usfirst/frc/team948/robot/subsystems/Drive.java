@@ -36,7 +36,6 @@ public class Drive extends Subsystem {
         setDefaultCommand(new DefaultDrive());
     }
     
-    
       public void rawDrive(double velX, double velY, double omega){
     	if (driveEnabled) {
     		velY *= scale;

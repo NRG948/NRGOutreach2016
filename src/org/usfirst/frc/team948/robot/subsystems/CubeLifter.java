@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class CubeLift extends Subsystem {
+public class CubeLifter extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -18,6 +18,7 @@ public class CubeLift extends Subsystem {
         // Set the default command for a subsystem here.
         setDefaultCommand(new ManualCubeLift());
     }
+    
     public void periodic() {
     	SmartDashboard.putData("LiftVictor", RobotMap.liftVictor);
     }

@@ -13,7 +13,6 @@ public class CubeLift extends Command {
 
     public CubeLift(double liftSpeed) {
     	this.liftSpeed = liftSpeed;
-    	requires(Robot.acquirer);
     }
 
     // Called just before this Command runs the first time

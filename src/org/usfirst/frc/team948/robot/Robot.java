@@ -13,6 +13,7 @@ import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.CubeLift;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
+import org.usfirst.frc.team948.robot.commands.DriveStraightDistance;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.TimedDrive;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
@@ -53,6 +54,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Straight", new TimedDrive(0, 0.8, 0, 2));
 		SmartDashboard.putData("Cube Acquirer Close", new AcquireClose());
 		SmartDashboard.putData("Cube Acquirer Open", new AcquireOpen());
+		SmartDashboard.putData("DriveStraightDistance", new DriveStraightDistance(0.5,2000,Drive.Direction.FORWARD));
 
 	}
 

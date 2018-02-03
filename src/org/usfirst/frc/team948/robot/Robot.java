@@ -54,7 +54,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Straight", new TimedDrive(0, 0.8, 0, 2));
 		SmartDashboard.putData("Cube Acquirer Close", new AcquireClose());
 		SmartDashboard.putData("Cube Acquirer Open", new AcquireOpen());
-		SmartDashboard.putData("DriveStraightDistance", new DriveStraightDistance(0.5,2000,Drive.Direction.FORWARD));
+		SmartDashboard.putData("DriveStraightDistanceF", new DriveStraightDistance(2.0,2000,Drive.Direction.FORWARD));
+		SmartDashboard.putData("DriveStraightDistanceB", new DriveStraightDistance(2.0,2000,Drive.Direction.BACKWARD));
+		SmartDashboard.putData("DriveStraightDistanceL", new DriveStraightDistance(2.0,2000,Drive.Direction.LEFT));
+		SmartDashboard.putData("DriveStraightDistanceR", new DriveStraightDistance(2.0,2000,Drive.Direction.RIGHT));
 
 	}
 

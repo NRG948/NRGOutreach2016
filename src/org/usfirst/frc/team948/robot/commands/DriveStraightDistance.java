@@ -5,7 +5,9 @@ import org.usfirst.frc.team948.robot.RobotMap;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//CONVERSION FROM DISPLACEMENT UNITS TO INCHES
+//39.2 units of displacement per inch of movement
 public class DriveStraightDistance extends Command {
 	private boolean powerInY=false;
 	private double startEncoderLeftFront;
@@ -24,19 +26,19 @@ public class DriveStraightDistance extends Command {
 		
 		switch(direction) {
 		case FORWARD:
-			this.power=Math.abs(power);
+			this.power=-Math.abs(power);
 			powerInY=true;
 			break;
 		case BACKWARD:
-			this.power=-Math.abs(power);
+			this.power=Math.abs(power);
 			powerInY=true;
 			break;
 		case LEFT:
-			this.power=-Math.abs(power);
+			this.power=Math.abs(power);
 			powerInY=false;
 			break;
 		case RIGHT:
-			this.power=Math.abs(power);
+			this.power=-Math.abs(power);
 			powerInY=false;
 			break;
 		}
@@ -48,6 +50,7 @@ public class DriveStraightDistance extends Command {
 		startEncoderRightBack=RobotMap.encoderRB.getDistance();
 		startEncoderLeftFront=RobotMap.encoderLF.getDistance();
 		startEncoderRightFront=RobotMap.encoderRF.getDistance();
+		Robot.drive.driveHeadingPIDInit(RobotMap.gyro.getAngle(),0.5);
 	}
 // According to RobotDrive.mecanumDrive_Cartesian in WPILib:
     //
@@ -72,6 +75,8 @@ public class DriveStraightDistance extends Command {
 		double xDisplacement=((distanceTravelledLF+distanceTravelledRB)-(distanceTravelledRF+distanceTravelledLB))/4;
 		double yDisplacement=((distanceTravelledLF+distanceTravelledRF)+(distanceTravelledLB+distanceTravelledRB))/4;
 		double rot=((distanceTravelledLF+distanceTravelledLB)-(distanceTravelledRF+distanceTravelledRB))/4;
+		SmartDashboard.putNumber("y displacement",yDisplacement);
+		SmartDashboard.putNumber("x displacement",xDisplacement);
 		if(powerInY) {
 			Robot.drive.driveHeadingPIDExecute(RobotMap.gyro.getAngle(), 0, power);
 			distanceTravelled=yDisplacement;//If the command is to move robot forward or backward, then only the y distance counts
@@ -84,7 +89,7 @@ public class DriveStraightDistance extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(distanceTravelled>=distance) {
+		if(Math.abs(distanceTravelled)>=distance) {
 			return true;
 		}
 		return false;

@@ -13,7 +13,6 @@ public class SwitchDrive extends Command{
 
 	@Override
 	protected void execute() {
-		Robot.drive.switchDrive();
 	}
 
 	@Override

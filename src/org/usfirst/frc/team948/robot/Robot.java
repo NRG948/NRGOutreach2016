@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team948.robot.commandGroup.DriveSquareWithDistance;
 import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.CubeLift;
@@ -58,6 +59,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("DriveStraightDistanceB", new DriveStraightDistance(2.0,2000,Drive.Direction.BACKWARD));
 		SmartDashboard.putData("DriveStraightDistanceL", new DriveStraightDistance(2.0,2000,Drive.Direction.LEFT));
 		SmartDashboard.putData("DriveStraightDistanceR", new DriveStraightDistance(2.0,2000,Drive.Direction.RIGHT));
+		SmartDashboard.putData("DriveStraightDistanceR", new DriveSquareWithDistance());
 
 	}
 

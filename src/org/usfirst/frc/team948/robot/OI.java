@@ -23,7 +23,7 @@ import org.usfirst.frc.team948.robot.subsystems.Drive;
  */
 public class OI {
 	public static final double Sensitivity = Preferences.getInstance().getDouble("Sensitivity", 1 / 5);
-	// public static final Joystick rightJoystick = new Joystick(1);
+//	 public static final Joystick rightJoystick = new Joystick(1);
 	public static final Joystick leftJoystick = new Joystick(0);
 	public static final Button shiftButton = new JoystickButton(leftJoystick, 1);
 	public static final Button acquireButton = new JoystickButton(leftJoystick, 2);

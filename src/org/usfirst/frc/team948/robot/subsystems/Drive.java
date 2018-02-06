@@ -38,9 +38,9 @@ public class Drive extends Subsystem {
 		SmartDashboard.putData("encoderRB", RobotMap.encoderRB);
 		SmartDashboard.putData("encoderLB", RobotMap.encoderLB);
 
-		SmartDashboard.putData("xPosition", Drive.xPosition);
-		SmartDashboard.putData("yPosition", Drive.yPosition);
-		SmartDashboard.putData("rotationPosition", Drive.rotationPosition);
+//		SmartDashboard.putData("xPosition", Drive.xPosition);
+//		SmartDashboard.putData("yPosition", Drive.yPosition);
+//		SmartDashboard.putData("rotationPosition", Drive.rotationPosition);
 		
 	}
 
@@ -48,10 +48,10 @@ public class Drive extends Subsystem {
 	public static final double SCALE_HIGH = 1.0;
 	public static final double SCALE_LOW = 0.5;
 
-	public static double encoderLF = RobotMap.encoderLF;
-	public static double encoderLB = RobotMap.encoderLB;
-	public static double encoderRF = RobotMap.encoderRF;
-	public static double encoderRB = RobotMap.encoderRB;
+	public static double encoderLF = RobotMap.encoderLF.get();
+	public static double encoderLB = RobotMap.encoderLB.get();
+	public static double encoderRF = RobotMap.encoderRF.get();
+	public static double encoderRB = RobotMap.encoderRB.get();
 	
 //	 xPos = ((lfEnc + rrEnc) - (rfEnc + lrEnc))*xScale/4.0;
 //    yPos = (lfEnc + lrEnc + rfEnc + rrEnc)*yScale/4.0;

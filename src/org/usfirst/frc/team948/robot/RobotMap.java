@@ -1,4 +1,7 @@
 package org.usfirst.frc.team948.robot;
+import org.usfirst.frc.team948.robot.utilities.ContinuousGyro;
+
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -10,6 +13,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+//import src.org.usfirst.frc948.NRGRobot2018.AHRS;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -18,6 +22,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
+	public static com.kauailabs.navx.frc.AHRS navx;
+	public static ContinuousGyro gyro;
 	public static Victor victorRF;
 	public static Victor victorRB;
 	public static Victor victorLF;
@@ -48,6 +54,7 @@ public class RobotMap {
 		encoderRB = new Encoder(6, 7, false);
 		encoderLF = new Encoder(9, 8, true);
 		encoderLB = new Encoder(2, 3, true);
-
+		navx = new AHRS(SPI.Port.kMXP);
+		gyro= new ContinuousGyro(navx);
 	}
 }

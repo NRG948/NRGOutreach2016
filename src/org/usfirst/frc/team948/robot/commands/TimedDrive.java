@@ -32,7 +32,7 @@ public class TimedDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.rawDrive(velX, velY, omega);
+    	Robot.drive.rawDriveCartesian(velX, velY, omega);
     }
 
     // Make this return true when this Command no longer needs to run execute()

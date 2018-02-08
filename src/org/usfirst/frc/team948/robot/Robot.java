@@ -22,6 +22,7 @@ import org.usfirst.frc.team948.robot.commands.TurnToHeading;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.CubeLifter;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
+import org.usfirst.frc.team948.robot.OI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -70,7 +71,6 @@ public class Robot extends TimedRobot {
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		periodicAll();
 	}
 
 	public void autonomousInit() {
@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		periodicAll();
+
 	}
 
 	public void teleopInit() {
@@ -111,7 +111,6 @@ public class Robot extends TimedRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		periodicAll();
 		SmartDashboard.putNumber("Xbox left trigger", OI.getTriggerL());
 		SmartDashboard.putNumber("Xbox right trigger", OI.getTriggerR());
 	}
@@ -123,7 +122,10 @@ public class Robot extends TimedRobot {
 		LiveWindow.run();
 	}
 
-	public void periodicAll() {
+	public void robotPeriodic() {
 //		SmartDashboard.putBoolean("catapult switch", RobotMap.catapultSwitch.get());
+		SmartDashboard.putString("Alliance Scale Side", OI.getScaleSide().toString());
+		SmartDashboard.putString("Alliance Switch Side", OI.getAllianceSwitchSide().toString());
+		SmartDashboard.putString("Opposing Switch Side", OI.getOppsingSwitchSide().toString());
 	}
 }

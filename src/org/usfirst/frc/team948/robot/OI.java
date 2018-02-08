@@ -1,6 +1,7 @@
 package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -16,6 +17,7 @@ import org.usfirst.frc.team948.robot.commands.CubeAcquire;
 import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
+import org.usfirst.frc.team948.robot.OI.Side;
 
 /**
  * This class is the glue that binds the controls on the physical operator interface to the commands
@@ -38,6 +40,10 @@ public class OI {
 
 	public static final Button leftBumper = new JoystickButton(xboxController, 6);
 	public static final Button rightBumper = new JoystickButton(xboxController, 5);
+	
+	public enum Side{
+		LEFT, RIGHT
+	}
 
 	public static void buttonInit() {
 		shiftButton.whenPressed(new SetDriveScale(Drive.SCALE_HIGH));
@@ -76,6 +82,18 @@ public class OI {
 
 	public static double getRot() {
 		return leftJoystick.getRawAxis(2) / 2;
+	}
+	
+	public static Side getAllianceSwitchSide(){
+		return DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L' ? Side.LEFT : Side.RIGHT;
+	}
+	
+	public static Side getScaleSide(){
+		return DriverStation.getInstance().getGameSpecificMessage().charAt(1) == 'L' ? Side.LEFT : Side.RIGHT;
+	}
+	
+	public static Side getOppsingSwitchSide(){
+		return DriverStation.getInstance().getGameSpecificMessage().charAt(2) == 'L' ? Side.LEFT : Side.RIGHT;
 	}
 }
 

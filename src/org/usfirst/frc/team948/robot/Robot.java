@@ -16,7 +16,9 @@ import org.usfirst.frc.team948.robot.commands.CubeLift;
 import org.usfirst.frc.team948.robot.commands.DefaultDrive;
 import org.usfirst.frc.team948.robot.commands.DriveStraightDistance;
 import org.usfirst.frc.team948.robot.commands.ResetSensors;
+import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.TimedDrive;
+import org.usfirst.frc.team948.robot.commands.TurnToHeading;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.CubeLifter;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
@@ -55,11 +57,14 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Straight", new TimedDrive(0, 0.8, 0, 2));
 		SmartDashboard.putData("Cube Acquirer Close", new AcquireClose());
 		SmartDashboard.putData("Cube Acquirer Open", new AcquireOpen());
-		SmartDashboard.putData("DriveStraightDistanceF", new DriveStraightDistance(2.0,2000,Drive.Direction.FORWARD));
-		SmartDashboard.putData("DriveStraightDistanceB", new DriveStraightDistance(2.0,2000,Drive.Direction.BACKWARD));
-		SmartDashboard.putData("DriveStraightDistanceL", new DriveStraightDistance(2.0,2000,Drive.Direction.LEFT));
-		SmartDashboard.putData("DriveStraightDistanceR", new DriveStraightDistance(2.0,2000,Drive.Direction.RIGHT));
-		SmartDashboard.putData("DriveStraightDistanceR", new DriveSquareWithDistance());
+		SmartDashboard.putData("DriveStraightDistanceF", new DriveStraightDistance(2.0,24,Drive.Direction.FORWARD));
+		SmartDashboard.putData("DriveStraightDistanceB", new DriveStraightDistance(2.0,24,Drive.Direction.BACKWARD));
+		SmartDashboard.putData("DriveStraightDistanceL", new DriveStraightDistance(2.0,24,Drive.Direction.LEFT));
+		SmartDashboard.putData("DriveStraightDistanceR", new DriveStraightDistance(2.0,24,Drive.Direction.RIGHT));
+		SmartDashboard.putData("DriveSquareWithDistance", new DriveSquareWithDistance());
+		SmartDashboard.putData("Set Scale High", new SetDriveScale(Drive.SCALE_HIGH));
+		SmartDashboard.putData("Set Scale Low", new SetDriveScale(Drive.SCALE_LOW));
+		SmartDashboard.putData("TurnToHeading 90", new TurnToHeading(90));
 
 	}
 

@@ -18,12 +18,12 @@ import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 
 /**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
+ * This class is the glue that binds the controls on the physical operator interface to the commands
+ * and command groups that allow control of the robot.
  */
 public class OI {
 	public static final double Sensitivity = Preferences.getInstance().getDouble("Sensitivity", 1 / 5);
-//	 public static final Joystick rightJoystick = new Joystick(1);
+	// public static final Joystick rightJoystick = new Joystick(1);
 	public static final Joystick leftJoystick = new Joystick(0);
 	public static final Button shiftButton = new JoystickButton(leftJoystick, 1);
 	public static final Button acquireButton = new JoystickButton(leftJoystick, 2);
@@ -46,16 +46,16 @@ public class OI {
 		// rightBumper.whenReleased(new CubeAcquire(0));
 		// leftBumper.whenPressed(new CubeAcquire(-1));
 		// leftBumper.whenReleased(new CubeAcquire(0));
-//		xboxA.whenPressed(new CubeLift(0.3));
-//		xboxA.whenReleased(new CubeLift(0));
-//		xboxY.whenPressed(new CubeLift(-0.5));
-//		xboxY.whenReleased(new CubeLift(0));
-		
-//		if (xboxController.getTriggerAxis(Hand.kLeft) > 0) {
-//			RobotMap.liftVictor.set(.3);
-//		} else if (xboxController.getTriggerAxis(Hand.kRight) > 0) {
-//			RobotMap.liftVictor.set(-.3);
-//		}
+		// xboxA.whenPressed(new CubeLift(0.3));
+		// xboxA.whenReleased(new CubeLift(0));
+		// xboxY.whenPressed(new CubeLift(-0.5));
+		// xboxY.whenReleased(new CubeLift(0));
+
+		// if (xboxController.getTriggerAxis(Hand.kLeft) > 0) {
+		// RobotMap.liftVictor.set(.3);
+		// } else if (xboxController.getTriggerAxis(Hand.kRight) > 0) {
+		// RobotMap.liftVictor.set(-.3);
+		// }
 	}
 
 	public static double getX() {
@@ -75,11 +75,7 @@ public class OI {
 	}
 
 	public static double getRot() {
-		if (Math.abs(leftJoystick.getRawAxis(2)) > 0.0) {
-			return -leftJoystick.getRawAxis(2) / 2;
-		} else {
-			return leftJoystick.getRawAxis(2) / 2;
-		}
+		return leftJoystick.getRawAxis(2) / 2;
 	}
 }
 

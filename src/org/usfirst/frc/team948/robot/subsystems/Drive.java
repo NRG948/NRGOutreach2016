@@ -82,7 +82,7 @@ public class Drive extends Subsystem implements PIDOutput {
 				tolerance);
 	}
 	
-	public void driveHeadingPIDExecute(double desiredHeading, double velX, double velY) {
+	public void driveHeadingPIDExecute(double velX, double velY) {
 		double currentPIDOutput = PIDOutput;
 
 		SmartDashboard.putNumber("Turn To Heading PID Error", drivePIDController.getError());

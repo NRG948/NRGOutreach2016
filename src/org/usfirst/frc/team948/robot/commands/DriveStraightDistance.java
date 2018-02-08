@@ -20,6 +20,7 @@ public class DriveStraightDistance extends Command {
 	private double power;
 	private double distance;
 	private Drive.Direction direction;
+	private double currentHeading;
 
 	public DriveStraightDistance(double power, double distance, Drive.Direction direction) {
 		this.direction = direction;
@@ -47,6 +48,7 @@ public class DriveStraightDistance extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		currentHeading = RobotMap.gyro.getAngle();
 		distanceTravelled = 0.0;
 		startEncoderLeftBack = RobotMap.encoderLB.getDistance();
 		startEncoderRightBack = RobotMap.encoderRB.getDistance();
@@ -84,11 +86,11 @@ public class DriveStraightDistance extends Command {
 		SmartDashboard.putNumber("y displacement", yDisplacement);
 		SmartDashboard.putNumber("x displacement", xDisplacement);
 		if (powerInY) {
-			Robot.drive.driveHeadingPIDExecute(RobotMap.gyro.getAngle(), 0, power);
+			Robot.drive.driveHeadingPIDExecute(0, power);
 			distanceTravelled = Math.abs(yDisplacement);// If the command is to move robot forward or
 												// backward, then only the y distance counts
 		} else {
-			Robot.drive.driveHeadingPIDExecute(RobotMap.gyro.getAngle(), power, 0);
+			Robot.drive.driveHeadingPIDExecute(power, 0);
 			distanceTravelled = Math.abs(xDisplacement);// If the command is to move robot left or
 														// right, then only the x distance counts
 		}

@@ -131,7 +131,10 @@ public class Drive extends Subsystem implements PIDOutput {
 		
 		RobotMap.mecanumDrive.stopMotor();
 	}
-	
+	/**
+	 * Sets the virtual high gear and low gear.
+	 * @param s 1 means high gear and 0.5 means low gear.
+	 **/
 	public void setScale(double s) {
 		scale = s;
 	}

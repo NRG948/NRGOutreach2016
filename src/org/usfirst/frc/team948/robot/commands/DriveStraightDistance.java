@@ -7,8 +7,7 @@ import org.usfirst.frc.team948.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-//CONVERSION FROM DISPLACEMENT UNITS TO INCHES
-//39.2 units of displacement per inch of movement
+//Units are in inches
 public class DriveStraightDistance extends Command {
 	private boolean powerInY = false;
 	private double startEncoderLeftFront;
@@ -54,7 +53,7 @@ public class DriveStraightDistance extends Command {
 		startEncoderRightBack = RobotMap.encoderRB.getDistance();
 		startEncoderLeftFront = RobotMap.encoderLF.getDistance();
 		startEncoderRightFront = RobotMap.encoderRF.getDistance();
-		Robot.drive.driveHeadingPIDInit(RobotMap.gyro.getAngle(), 0.5);
+		Robot.drive.driveHeadingPIDInit(RobotMap.gyro.getAngle(), 2.0);
 		System.out.println(String.format("DriveStraightDistance()", power, distance, direction));
 	}
 
@@ -82,7 +81,7 @@ public class DriveStraightDistance extends Command {
 				- (distanceTravelledRF + distanceTravelledLB)) / 4;
 		double yDisplacement = ((distanceTravelledLF + distanceTravelledRF)
 				+ (distanceTravelledLB + distanceTravelledRB)) / 4;
-		double rot = ((distanceTravelledLF + distanceTravelledLB) - (distanceTravelledRF + distanceTravelledRB)) / 4;
+		// double rot = ((distanceTravelledLF + distanceTravelledLB) - (distanceTravelledRF + distanceTravelledRB)) / 4;
 		SmartDashboard.putNumber("y displacement", yDisplacement);
 		SmartDashboard.putNumber("x displacement", xDisplacement);
 		if (powerInY) {
@@ -97,12 +96,8 @@ public class DriveStraightDistance extends Command {
 		SmartDashboard.putNumber("distance travelled", distanceTravelled);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Math.abs(distanceTravelled) >= distance) {
-			return true;
-		}
-		return false;
+		return  (distanceTravelled >= distance); 
 	}
 
 	// Called once after isFinished returns true

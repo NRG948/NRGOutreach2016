@@ -53,14 +53,14 @@ public class RobotMap {
 		victorLB.setInverted(true);
 		victorLF.setInverted(true);
 		mecanumDrive = new MecanumDrive(victorLF, victorLB, victorRF, victorRB);
-		encoderRF = new Encoder(4, 5, false);
-		encoderRF.setDistancePerPulse(1.0/39.2);
-		encoderRB = new Encoder(6, 7, false);
-		encoderRB.setDistancePerPulse(1.0/39.2);
-		encoderLF = new Encoder(9, 8, true);
-		encoderLF.setDistancePerPulse(1.0/39.2);
-		encoderLB = new Encoder(2, 3, true);
-		encoderLB.setDistancePerPulse(1.0/39.2);
+		encoderRF = new Encoder(4, 5, true);
+		encoderRF.setDistancePerPulse(1.0/107.7);
+		encoderRB = new Encoder(6, 7, true);
+		encoderRB.setDistancePerPulse(1.0/107.7);
+		encoderLF = new Encoder(8, 9, false);
+		encoderLF.setDistancePerPulse(1.0/107.7);
+		encoderLB = new Encoder(2, 3, false);
+		encoderLB.setDistancePerPulse(1.0/107.7);
 		gyro = new AnalogGyro(0);
 	}
 }

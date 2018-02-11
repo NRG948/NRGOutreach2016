@@ -7,9 +7,11 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team948.robot.commandGroup.DriveSquareWithDistance;
+import org.usfirst.frc.team948.robot.commandGroup.AutonomousRoutines;
 import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.CubeLift;
@@ -19,10 +21,13 @@ import org.usfirst.frc.team948.robot.commands.ResetSensors;
 import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.TimedDrive;
 import org.usfirst.frc.team948.robot.commands.TurnToHeading;
+import org.usfirst.frc.team948.robot.commands.TurnToHeadingNoPID;
 import org.usfirst.frc.team948.robot.subsystems.CubeAcquirer;
 import org.usfirst.frc.team948.robot.subsystems.CubeLifter;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.OI;
+import org.usfirst.frc.team948.robot.Robot.AutoMovement;
+import org.usfirst.frc.team948.robot.Robot.AutoPosition;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,12 +40,21 @@ public class Robot extends TimedRobot {
 	public static final Drive drive = new Drive();
 	public static final CubeAcquirer acquirer = new CubeAcquirer();
 	public static final CubeLifter cubeLifter = new CubeLifter();
+	public static SendableChooser<AutoPosition> autoPositionChooser;
+	public static SendableChooser<AutoMovement> autoMovementChooser;
+	
+	public enum AutoPosition {
+		RED_LEFT, RED_CENTER, RED_RIGHT, BLUE_LEFT, BLUE_CENTER, BLUE_RIGHT
+	}
+	public enum AutoMovement {
+		RIGHT_SWITCH, LEFT_SWITCH, LEFT_SCALE, RIGHT_SCALE
+	}
 	
 	public static OI oi;
 
 	private Timer timer = new Timer();
 
-	Command autonomousCommand;
+	public static Command autonomousCommand;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -66,15 +80,34 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Set Scale High", new SetDriveScale(Drive.SCALE_HIGH));
 		SmartDashboard.putData("Set Scale Low", new SetDriveScale(Drive.SCALE_LOW));
 		SmartDashboard.putData("TurnToHeading 90", new TurnToHeading(90));
+		SmartDashboard.putData("TurnToHeadingNoPID 90", new TurnToHeadingNoPID(90));
+		
+		autoPositionChooser = new SendableChooser<AutoPosition>();
+		autoPositionChooser.addDefault("Red left", AutoPosition.RED_LEFT);
+		autoPositionChooser.addObject("Red center", AutoPosition.RED_CENTER);
+		autoPositionChooser.addObject("Red right", AutoPosition.RED_RIGHT);
+		autoPositionChooser.addObject("Blue left", AutoPosition.BLUE_LEFT);
+		autoPositionChooser.addObject("Blue center", AutoPosition.BLUE_CENTER);
+		autoPositionChooser.addObject("Blue right", AutoPosition.BLUE_RIGHT);
 
+		autoMovementChooser = new SendableChooser<AutoMovement>();
+		autoMovementChooser.addObject("Left Scale", AutoMovement.LEFT_SCALE);
+		autoMovementChooser.addObject("Left Switch", AutoMovement.LEFT_SWITCH);
+		autoMovementChooser.addObject("Right Switch", AutoMovement.RIGHT_SWITCH);
+		autoMovementChooser.addDefault("Right Scale", AutoMovement.RIGHT_SCALE);
+
+		SmartDashboard.putData("Choose autonomous position", autoPositionChooser);
+		SmartDashboard.putData("Choose autonomous movement", autoMovementChooser);
+		
 	}
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
+	@Override
 	public void autonomousInit() {
-		// schedule the autonomous command (example)
+		System.out.println("auto init");
+		autonomousCommand = new AutonomousRoutines();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}

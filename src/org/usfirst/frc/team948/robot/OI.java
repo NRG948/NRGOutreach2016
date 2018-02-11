@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 
 import org.usfirst.frc.team948.robot.commands.AcquireClose;
@@ -18,6 +19,8 @@ import org.usfirst.frc.team948.robot.commands.SetDriveScale;
 import org.usfirst.frc.team948.robot.commands.SwitchDrive;
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.OI.Side;
+import org.usfirst.frc.team948.robot.Robot.AutoMovement;
+import org.usfirst.frc.team948.robot.Robot.AutoPosition;
 
 /**
  * This class is the glue that binds the controls on the physical operator interface to the commands
@@ -40,6 +43,7 @@ public class OI {
 
 	public static final Button leftBumper = new JoystickButton(xboxController, 6);
 	public static final Button rightBumper = new JoystickButton(xboxController, 5);
+
 	
 	public enum Side{
 		LEFT, RIGHT
@@ -96,5 +100,3 @@ public class OI {
 		return DriverStation.getInstance().getGameSpecificMessage().charAt(2) == 'L' ? Side.LEFT : Side.RIGHT;
 	}
 }
-
-;

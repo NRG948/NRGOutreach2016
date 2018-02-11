@@ -1,5 +1,9 @@
 package org.usfirst.frc.team948.robot;
 
+import org.usfirst.frc.team948.robot.vision.IPixyLink;
+import org.usfirst.frc.team948.robot.vision.PixyCam;
+import org.usfirst.frc.team948.robot.vision.SPIwrapper;
+
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -7,6 +11,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,32 +32,41 @@ public class RobotMap {
 	public static Victor victorRB;
 	public static Victor victorLF;
 	public static Victor victorLB;
-	public static Victor aqVictorR;
-	public static Victor aqVictorL;
 	public static Encoder encoderRF;
 	public static Encoder encoderRB;
 	public static Encoder encoderLF;
-	public static Encoder encoderLB;	
-	public static Compressor c;
-	public static DoubleSolenoid cubeAcquirer;
+	public static Encoder encoderLB;
 	public static MecanumDrive mecanumDrive;
-	public static Victor liftVictor; 
+	
+	public static Victor aqVictorR;
+	public static Victor aqVictorL;
+	public static DoubleSolenoid cubeAcquirer;
+	
+	public static Victor liftVictor;
+	
+	public static Compressor c;
+	
+	public static IPixyLink link;
+	public static PixyCam pixy;
+
 	public static void init(){
 		c = new Compressor(0);
-		cubeAcquirer = new DoubleSolenoid(2, 3);
 		victorRB = new Victor(0);
 		victorRF = new Victor(1);
 		victorLF = new Victor(3);
 		victorLB = new Victor(2);
-		liftVictor = new Victor(4);
-		aqVictorL = new Victor(5);
-		aqVictorR = new Victor(6);
-		
 		victorRB.setInverted(true);
 		victorRF.setInverted(true);
 		victorLB.setInverted(true);
 		victorLF.setInverted(true);
 		mecanumDrive = new MecanumDrive(victorLF, victorLB, victorRF, victorRB);
+		
+		cubeAcquirer = new DoubleSolenoid(2, 3);
+		aqVictorL = new Victor(5);
+		aqVictorR = new Victor(6);
+		
+		liftVictor = new Victor(4);
+
 		encoderRF = new Encoder(4, 5, true);
 		encoderRF.setDistancePerPulse(1.0/107.7);
 		encoderRB = new Encoder(6, 7, true);
@@ -62,5 +76,8 @@ public class RobotMap {
 		encoderLB = new Encoder(2, 3, false);
 		encoderLB.setDistancePerPulse(1.0/107.7);
 		gyro = new AnalogGyro(0);
+		
+		link = new SPIwrapper(SPI.Port.kOnboardCS0);
+		pixy = new PixyCam(link);
 	}
 }

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team948.robot.commandGroup;
+package org.usfirst.frc.team948.robot.commandGroups;
 
 import static org.usfirst.frc.team948.robot.Robot.AutoPosition.RED_LEFT;
 import static org.usfirst.frc.team948.robot.Robot.AutoPosition.RED_RIGHT;

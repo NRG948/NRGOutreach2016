@@ -1,4 +1,4 @@
-package org.usfirst.frc.team948.robot.commandGroup;
+package org.usfirst.frc.team948.robot.commandGroups;
 
 import org.usfirst.frc.team948.robot.commands.DriveStraightDistance;
 import org.usfirst.frc.team948.robot.commands.SetDriveScale;

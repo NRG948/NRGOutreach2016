@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team948.robot.commandGroup.DriveSquareWithDistance;
-import org.usfirst.frc.team948.robot.commandGroup.AutonomousRoutines;
 import org.usfirst.frc.team948.robot.commands.AcquireClose;
 import org.usfirst.frc.team948.robot.commands.AcquireOpen;
 import org.usfirst.frc.team948.robot.commands.CubeLift;
@@ -28,6 +26,8 @@ import org.usfirst.frc.team948.robot.subsystems.Drive;
 import org.usfirst.frc.team948.robot.OI;
 import org.usfirst.frc.team948.robot.Robot.AutoMovement;
 import org.usfirst.frc.team948.robot.Robot.AutoPosition;
+import org.usfirst.frc.team948.robot.commandGroups.AutonomousRoutines;
+import org.usfirst.frc.team948.robot.commandGroups.DriveSquareWithDistance;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -99,6 +99,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Choose autonomous position", autoPositionChooser);
 		SmartDashboard.putData("Choose autonomous movement", autoMovementChooser);
 		
+		RobotMap.pixy.startVisionThread();
 	}
 
 	public void disabledPeriodic() {

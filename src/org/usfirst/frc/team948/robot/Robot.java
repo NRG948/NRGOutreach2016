@@ -145,8 +145,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("Xbox left trigger", OI.getTriggerL());
-		SmartDashboard.putNumber("Xbox right trigger", OI.getTriggerR());
+		
 	}
 
 	/**
@@ -158,8 +157,14 @@ public class Robot extends TimedRobot {
 
 	public void robotPeriodic() {
 //		SmartDashboard.putBoolean("catapult switch", RobotMap.catapultSwitch.get());
-		SmartDashboard.putString("Alliance Scale Side", OI.getScaleSide().toString());
-		SmartDashboard.putString("Alliance Switch Side", OI.getAllianceSwitchSide().toString());
-		SmartDashboard.putString("Opposing Switch Side", OI.getOppsingSwitchSide().toString());
+//		SmartDashboard.putString("Alliance Scale Side", OI.getScaleSide().toString());
+//		SmartDashboard.putString("Alliance Switch Side", OI.getAllianceSwitchSide().toString());
+//		SmartDashboard.putString("Opposing Switch Side", OI.getOppsingSwitchSide().toString());
+
+		SmartDashboard.putNumber("Xbox left trigger", OI.getTriggerL());
+		SmartDashboard.putNumber("Xbox right trigger", OI.getTriggerR());
+		
+		SmartDashboard.putNumber("get x Joystick", OI.getX());
+		SmartDashboard.putNumber("get y Joystick ", OI.getY());
 	}
 }

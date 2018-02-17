@@ -28,8 +28,9 @@ import org.usfirst.frc.team948.robot.Robot.AutoPosition;
  */
 public class OI {
 	public static final double Sensitivity = Preferences.getInstance().getDouble("Sensitivity", 1 / 5);
-	// public static final Joystick rightJoystick = new Joystick(1);
 	public static final Joystick leftJoystick = new Joystick(0);
+	public static final Joystick rightJoystick = new Joystick(1);
+	
 	public static final Button shiftButton = new JoystickButton(leftJoystick, 1);
 	public static final Button acquireButton = new JoystickButton(leftJoystick, 2);
 	public static final Button liftUpButton = new JoystickButton(leftJoystick, 3);
@@ -73,19 +74,19 @@ public class OI {
 	}
 
 	public static double getY() {
-		return leftJoystick.getY();
-	}
-
-	public static double getTriggerR() {
-		return xboxController.getRawAxis(3);
-	}
-
-	public static double getTriggerL() {
-		return xboxController.getRawAxis(2);
+		return  -rightJoystick.getY();
 	}
 
 	public static double getRot() {
-		return leftJoystick.getRawAxis(2) / 2;
+		return rightJoystick.getRawAxis(2) / 2;
+	}
+	
+	public static double getTriggerR() {
+		return xboxController.getRawAxis(3);
+	}
+	
+	public static double getTriggerL() {
+		return xboxController.getRawAxis(2);
 	}
 	
 	public static Side getAllianceSwitchSide(){

@@ -25,6 +25,7 @@ public class CubeAcquire extends Command {
     protected void execute() {
     	RobotMap.aqVictorL.set(-aqSpeed);
     	RobotMap.aqVictorR.set(aqSpeed);
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()
